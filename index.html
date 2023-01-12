@@ -1,0 +1,91 @@
+<h1 style="text-align: center;"><span style="font-size: 18pt; color: #000000;">POHWU學生預排課程查詢系統</span></h1>
+	<table style="height: 189px; margin-left: auto; margin-right: auto;" border="1" width="581" cellspacing="1" cellpadding="1">
+	<tbody>
+	<tr>
+	<td style="width: 571px;">
+	<ol>
+	<li>
+	<p><span style="color: #000000; font-size: 12pt; font-family: 'andale mono', monospace;"><strong>POHWU學生預排課程查詢系統為學生建議新增功能，經教務處會議討論後決議開發。</strong></span></p>
+	</li>
+	<li>
+	<p><span style="color: #000000; font-size: 12pt; font-family: 'andale mono', monospace;"><strong>於選課開放前，全校學生可至POHWU課程查詢察看該學期課程，預先規劃本學期課表，預排課程管理系統並非選課，僅提供學生預先排定這學期欲選課規劃之功能，如學科生所剩學分只剩1、2門，也沒有一定非得使用預排課程管理系統，直接於選課未開放時，至預排課程管理系統加選即可。</strong></span></p>
+	</li>
+	<li>
+	<p><span style="color: #000000; font-size: 12pt; font-family: 'andale mono', monospace;"><strong>IDP-POHWU預排課程管理系統登入進去後，學生填寫預排表單系統，可依所見POHWU課程查詢表課程即填寫預排送出無法修改。</strong></span></p>
+	</li>
+	<li>
+	<p><span style="color: #000000; font-size: 12pt; font-family: 'andale mono', monospace;"><strong>學生預排之課程可做衝堂規劃，預排課程不可衝堂且不一定選中。</strong></span></p>
+	</li>
+	<li>
+	<p><span style="color: #000000; font-size: 12pt; font-family: 'andale mono', monospace;"><strong>POHWU學生預排課程查詢系統結果時間約3~5小時，查詢時，理化為A、宗教為B、歷史為C、人文為D，要加上自己的學號做查詢動作。</strong></span></p>
+	</li>
+	<li><span style="color: #000000; font-size: 12pt; font-family: 'andale mono', monospace;"><b>POHWU學生預排課程查詢時間請至</b><strong><a style="color: #000000;" href="http://hwu.mywebcommunity.org/">首頁公告</a></strong><b><strong>。</strong></b></span></li>
+	<li>
+	<p><span style="font-size: 12pt; font-family: georgia, palatino, serif;"><strong><span style="color: #000000; font-family: 'andale mono', monospace;">若有問題請洽教務處MAIL:hwu101@outlook.com 。</span>　</strong></span></p>
+	</li>
+	</ol>
+	</td>
+	</tr>
+	</tbody>
+	</table>
+	<p><span style="font-size: 12pt; color: #000000;"> </span></p>
+	<p> </p>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+	function showHint(str)
+	{
+	var xmlhttp;
+	
+	if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+	xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+	if (xmlhttp.readyState==4 && xmlhttp.status==200) 
+	{
+	var result=xmlhttp.responseText;
+	var obj = JSON.parse(result);//解析json字串為json物件形式
+	
+	var html = '<table border=1 width=100%>';//
+	
+	for (var i = 0; i < obj.length; i ++ ) {//
+	html += '<tr>';//
+	for(j=0;j<obj[i].data.length;j++)
+	{
+	html+= '<td>'+obj[i].data[j]+'</td>'; 
+	}
+	html += '</tr>'; 
+	}
+	html+="</table>";
+	
+	document.getElementById("order_status").innerHTML=html;
+	if(obj.length==1) //只有一筆代表查不到資料
+	alert('查無資料');
+	}
+	
+	}
+	var url="https://script.google.com/macros/s/AKfycbwvisdEb3N46fPxbmMAHUvf800_7vXhO-9sILI_OKPWD70wW2XNunMKWPxq8Lm--fJhPw/exec";
+	xmlhttp.open("get",url+"?uid="+encodeURIComponent(str),true);
+	xmlhttp.send();
+	}
+	</script>
+	
+	
+	
+	請輸入預排學號：<input type="text" id="uid">
+	<input type="button" name="inq" value="查詢" onclick="showHint(uid.value);"><br>
+	
+	<span id="order_status"></span>
+	Footer
+	© 2023 POHWU, Inc.
+	Footer navigation
+	Terms
+	Privacy
+	Security
+	Status
+
